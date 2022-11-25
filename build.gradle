@@ -1,0 +1,59 @@
+/*
+ * Copyright (C) 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.versions = [:]
+    /**
+     * NOTE: My compileSDK, versions.kotlin changed, this is as a result of updating
+        my dependencies and upgrading my gradle as well as making some migrations to fit the
+         necessary Apis to run the app
+     */
+    versions.compileSdk = 33
+    versions.minSdk = 16
+    versions.targetSdk = 30
+    versions.kotlin = '1.7.20'
+
+    // MARK: Add this buildScript, if it not already included
+    versions.work = "2.7.1"
+
+    repositories {
+        google()
+        mavenCentral()
+    } //end: repositories
+
+    dependencies {
+        
+        /** NOTE: I updated my dependencies here and as well did some migrations
+             outside the scope of the project covered. So if you dont know how to fix
+             dependencies upgrades, Do NOT UPDATE YOUR DEPENDENCIES FOR THIS PROJECT.
+         */
+        classpath 'com.android.tools.build:gradle:7.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+    }
+} //end: dependencies
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+} //end: allprojects
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
