@@ -20,13 +20,18 @@
        If you did not update or upgrade your gradle
   -->
 
-<manifest xmlns:tools="http://schemas.android.com/tools"
+<manifest package="com.example.background"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
 
+    <queries>
+        <package android:name="com.example.background" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="image/png"/>
+        </intent>
+    </queries>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
